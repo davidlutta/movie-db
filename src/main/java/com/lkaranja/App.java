@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.lkaranja.model.Result;
+import com.lkaranja.playmodel.*;
 
 import okhttp3.HttpUrl;
 import okhttp3.OkHttpClient;
@@ -31,6 +32,7 @@ import org.slf4j.LoggerFactory;
 public class App {
     static Logger logger = LoggerFactory.getLogger(App.class);
 
+    // Discover Resuslts handling
     public static List<Result> processResults(Response response) {
         List<Result> results = new ArrayList<>();
         // Result result = null;
@@ -56,6 +58,31 @@ public class App {
         return results;
     }
 
+    public static List<PlayResult> processPlayingResults(Response response) {
+        List<PlayResult> playresults = new ArrayList<>();
+        // Result result = null;
+
+        try {
+            String jsonData = response.body().string();
+
+            // logger.info("jsonData: " + jsonData);
+            if (response.isSuccessful()) {
+                JSONObject responseJson = new JSONObject(jsonData);
+                JSONArray jsonArray = responseJson.getJSONArray("results");
+
+                Type collectionType = new TypeToken<List<PlayResult>>() {}.getType();
+
+                Gson gson = new GsonBuilder().create();
+                playresults = gson.fromJson(jsonArray.toString(), collectionType);
+                
+            }
+        } catch (JSONException | NullPointerException | IOException e) {
+            e.printStackTrace();
+        }
+
+        return playresults;
+    }
+
     public static void main(String[] args) {
         OkHttpClient client = new OkHttpClient();
 
@@ -74,23 +101,16 @@ public class App {
         staticFileLocation("/public");
         String layout = "templates/layout.vtl";
 
-
-        // get("/", (req, res) -> {
-        //     Map<String, Object> model = new HashMap<>();
-        //     model.put("template", "templates/index.vtl");
-        //     return new VelocityTemplateEngine().render(new ModelAndView(model, layout));
-        // });
-
         get("/", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
 
-            HttpUrl.Builder urlBuilder = HttpUrl.parse(Constants.BASE_URL).newBuilder();
-            urlBuilder.addQueryParameter(Constants.VIDEO_PARAMETER,Constants.VIDEO);
-            urlBuilder.addQueryParameter(Constants.ADULT_PARAMETER,Constants.ADULT);
-            urlBuilder.addQueryParameter(Constants.SORT_PARAMETER,Constants.SORT);
-            urlBuilder.addQueryParameter(Constants.API_PARAMETER,Constants.API);
+            HttpUrl.Builder playingBuilder = HttpUrl.parse(Constants.BASE_URL).newBuilder();
+            playingBuilder.addQueryParameter(Constants.VIDEO_PARAMETER,Constants.VIDEO);
+            playingBuilder.addQueryParameter(Constants.ADULT_PARAMETER,Constants.ADULT);
+            playingBuilder.addQueryParameter(Constants.SORT_PARAMETER,Constants.SORT);
+            playingBuilder.addQueryParameter(Constants.API_PARAMETER,Constants.API);
 
-            String url = urlBuilder.build().toString();
+            String url = playingBuilder.build().toString();
             logger.info("url is: "+url);
 
             Request request = new Request.Builder()
@@ -102,6 +122,35 @@ public class App {
                 if (result != null) {
                     model.put("movies", result);
                     // logger.info("Request is: "+request);
+
+                }
+            } catch(IOException e) {
+                e.getStackTrace();
+            }
+
+            model.put("template", "templates/index.vtl");
+            return new VelocityTemplateEngine().render(new ModelAndView(model, layout));
+        });
+
+
+        get("/playing", (req,res)->{
+            Map<String, Object> model = new HashMap<>();
+
+            HttpUrl.Builder playingBuilder = HttpUrl.parse(Constants.PLAYING_URL_PARAMETER).newBuilder();
+            playingBuilder.addQueryParameter(Constants.API_PARAMETER,Constants.API);
+
+            String url_playing = playingBuilder.build().toString();
+            logger.info("PLaying url is: "+url_playing);
+
+            Request requestplay = new Request.Builder()
+                .url(url_playing)
+                .build();
+
+            try (Response playresponse = client.newCall(requestplay).execute()) {
+                List<PlayResult> playin_result = processPlayingResults(playresponse);
+                if (playin_result != null) {
+                    model.put("playing", playin_result);
+                    logger.info("Playing result is: "+playin_result);
 
                 }
             } catch(IOException e) {
