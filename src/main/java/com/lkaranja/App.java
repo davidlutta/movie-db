@@ -150,15 +150,16 @@ public class App {
                 List<PlayResult> playin_result = processPlayingResults(playresponse);
                 if (playin_result != null) {
                     model.put("playing", playin_result);
-                    logger.info("Playing result is: "+playin_result);
+                    // logger.info("Playing result is: "+playin_result);
 
                 }
             } catch(IOException e) {
                 e.getStackTrace();
             }
 
-            model.put("template", "templates/index.vtl");
+            model.put("template", "templates/playing.vtl");
             return new VelocityTemplateEngine().render(new ModelAndView(model, layout));
         });
+
     }
 }
