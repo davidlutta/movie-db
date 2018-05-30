@@ -10,9 +10,9 @@ public class Constants {
     public static final String SORT = "popularity.desc";
 
 
-    public static final String PLAYING_PARAMETER = "true";
-    public static final String PLAYING = "now_playing";
-    
+    public static final String PLAYING_URL_PARAMETER = "https://api.themoviedb.org/3/movie/now_playing";
+    // public static final String PLAYING = "now_playing";
+
 
     public static final String API_PARAMETER = "api_key";
     public static final String API = "7e71e907dd76aa2aea6fe16ba270239a";
