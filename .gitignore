@@ -13,7 +13,9 @@
 *.dmg
 *.gz
 *.iso
-*.jar›
+
+*.jar
+
 *.rar
 *.tar
 *.zip
@@ -36,9 +38,27 @@ Thumbs.db
 ############
 build/
 .gradle/
-.idea/
-!gradle-wrapper.jar
+
 
 # Constants #
 ############
 com.mdteam.Constants
+
+bin/
+.netlify
+
+# IDE FILES #
+############
+.classpath
+.project
+.settings/
+.idea
+.metadata
+*.iml
+*.ipr
+.vscode/
+Constants.java
+
+# Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
+!gradle-wrapper.jar
+
