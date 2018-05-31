@@ -11,7 +11,8 @@ public class Constants {
 
 
     public static final String PLAYING_URL_PARAMETER = "https://api.themoviedb.org/3/movie/now_playing";
-    // public static final String PLAYING = "now_playing";
+
+
 
 
     public static final String API_PARAMETER = "api_key";
