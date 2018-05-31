@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.lkaranja.detailsmodel.Details;
 import com.lkaranja.model.Result;
 import com.lkaranja.playmodel.*;
 
@@ -83,6 +84,31 @@ public class App {
         return playresults;
     }
 
+    public static List<Details> processDetailResults(Response response) {
+        List<Details> detailresults = new ArrayList<>();
+        // Result result = null;
+
+        try {
+            String jsonData = response.body().string();
+
+            // logger.info("jsonData: " + jsonData);
+            if (response.isSuccessful()) {
+                JSONObject responseJson = new JSONObject(jsonData);
+                JSONArray jsonArray = responseJson.getJSONArray("results");
+
+                Type collectionType = new TypeToken<List<Details>>() {}.getType();
+
+                Gson gson = new GsonBuilder().create();
+                detailresults = gson.fromJson(jsonArray.toString(), collectionType);
+                
+            }
+        } catch (JSONException | NullPointerException | IOException e) {
+            e.printStackTrace();
+        }
+
+        return detailresults;
+    }
+
     public static void main(String[] args) {
         OkHttpClient client = new OkHttpClient();
 
@@ -160,6 +186,34 @@ public class App {
             model.put("template", "templates/playing.vtl");
             return new VelocityTemplateEngine().render(new ModelAndView(model, layout));
         });
+        get("/details/:id", (req,res)->{
+            Map<String, Object> model = new HashMap<>();
 
+            String movieID = req.params("id");
+
+            HttpUrl.Builder detailsBuilder = HttpUrl.parse(Constants.BASE_URL+movieID).newBuilder();
+            // detailsBuilder.addQueryParameter(name, value)
+
+            String url_details = detailsBuilder.build().toString();
+            logger.info("PLaying url is: "+url_details);
+
+            Request requestplay = new Request.Builder()
+                .url(url_details)
+                .build();
+
+            try (Response detailsresponse = client.newCall(requestplay).execute()) {
+                List<PlayResult> details_result = processPlayingResults(detailsresponse);
+                if (details_result != null) {
+                    model.put("details", details_result);
+                    // logger.info("Playing result is: "+playin_result);
+
+                }
+            } catch(IOException e) {
+                e.getStackTrace();
+            }
+
+            model.put("template", "templates/details.vtl");
+            return new VelocityTemplateEngine().render(new ModelAndView(model, layout));
+        });
     }
 }
