@@ -1,5 +1,5 @@
 
-package com.lkaranja;
+package com.lkaranja.detailsmodel;
 
 import java.util.HashMap;
 import java.util.Map;
