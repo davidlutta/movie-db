@@ -159,21 +159,18 @@ public class App{
         return playresults;
     }
 
-    public static Details processDetailResults(Response response) {
-        Details detailresults = null;
+    public static MDetails processDetailResults(Response response) {
+        MDetails detailresults = null;
         // Result result = null;
 
         try {
             String jsonData = response.body().string();
-            logger.info("Details response: " + jsonData);
+            // logger.info("Details response: " + jsonData);
             if (response.isSuccessful()) {
                 JSONObject responseJson = new JSONObject(jsonData);
-                // JSONArray jsonArray = responseJson.getJSONArray("results");
-
-                // Type collectionType = new TypeToken<List<Details>>() {}.getType();
 
                 Gson gson = new GsonBuilder().create();
-                detailresults = gson.fromJson(responseJson.toString(), Details.class);
+                detailresults = gson.fromJson(responseJson.toString(), MDetails.class);
                 
             }
         } catch (JSONException | NullPointerException | IOException e) {
@@ -201,10 +198,7 @@ public class App{
      get("/", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
 
-            HttpUrl.Builder playingBuilder = HttpUrl.parse(Constants.BASE_URL).newBuilder();
-            // playingBuilder.addQueryParameter(Constants.VIDEO_PARAMETER,Constants.VIDEO);
-            // playingBuilder.addQueryParameter(Constants.ADULT_PARAMETER,Constants.ADULT);
-            // playingBuilder.addQueryParameter(Constants.SORT_PARAMETER,Constants.SORT);
+            HttpUrl.Builder playingBuilder = HttpUrl.parse(Constants.BASE_DISCOVER_URL).newBuilder();
             playingBuilder.addQueryParameter(Constants.API_PRE,Constants.API_KEY);
 
             String url = playingBuilder.build().toString();
@@ -218,7 +212,7 @@ public class App{
                 List<Result> result = processResults(response);
                 if (result != null) {
                     model.put("movies", result);
-                    // logger.info("Request is: "+request);
+                    // logger.info("Request is: "+result);
 
                 }
             } catch(IOException e) {
@@ -302,9 +296,10 @@ public class App{
                 .build();
 
             try (Response detailsresponse = client.newCall(requestdetails).execute()) {
-                Details details_result = processDetailResults(detailsresponse);
+                MDetails details_result = processDetailResults(detailsresponse);
                 if (details_result != null) {
                     model.put("details", details_result);
+                    // logger.info("Details: ", details_result);
 
                 }
             } catch(IOException e) {

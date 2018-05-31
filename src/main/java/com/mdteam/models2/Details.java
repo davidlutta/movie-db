@@ -10,7 +10,7 @@ public class Details {
     private String backdropPath;
     private List<CreatedBy> created_by = null;
     private List<Integer> episode_run_time = null;
-    private String firstAirDate;
+    private String first_air_date;
     private List<Genre> genres = null;
     private String homepage;
     private int id;
@@ -76,7 +76,7 @@ public class Details {
         this.backdropPath = backdropPath;
         this.created_by = createdBy;
         this.episode_run_time = episodeRunTime;
-        this.firstAirDate = firstAirDate;
+        this.first_air_date = firstAirDate;
         this.genres = genres;
         this.homepage = homepage;
         this.id = id;
@@ -126,11 +126,11 @@ public class Details {
     }
 
     public String getFirstAirDate() {
-        return firstAirDate;
+        return first_air_date;
     }
 
     public void setFirstAirDate(String firstAirDate) {
-        this.firstAirDate = firstAirDate;
+        this.first_air_date = firstAirDate;
     }
 
     public List<Genre> getGenres() {

@@ -17,3 +17,7 @@ body{
     text-transform: uppercase;
     font-weight: bold;
 }
+.comment{
+    bacground-color:#757575;
+    color:#fff;
+}

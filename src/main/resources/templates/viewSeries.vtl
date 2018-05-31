@@ -1,15 +1,58 @@
-<img src="https://image.tmdb.org/t/p/w500$details.getPosterPath()" alt="img" width="100px" height="100px">
-<h1>$details.getName()</h1>
-<h1>Number of Seasons: $details.getNumberOfSeasons()</h1>
-<h1>Episodes: $details.getNumberOfEpisodes()</h1>
-<!--#foreach($time in $details.getEpisodeRunTime())-->
-    <h2>Episode Run Time: $details.getEpisodeRunTime().get(0) minutes</h2>
-<!--#end-->
-#foreach($creator in $details.getCreatedBy())
-    <h2>Created By: $creator.getName()</h2>
-#end
-<h2>OverView:</h2>
-<p>$details.getOverview()</p>
-#foreach($company in $details.getNetworks())
-    <h1>Production Company: $company.getName()</h1>
-#end
+<div class="container">
+    <div class="video">
+        <iframe src="https://www.youtube.com/embed?listType=search&list=$details.getName()">
+        </iframe>
+    </div>
+    <br><br>
+    <div class="collections">
+        #if($details.getName())
+        <h2 class="textC">$details.getName()</h2>
+        #else
+        <p></p>
+        #end
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <img src="https://image.tmdb.org/t/p/w500$details.getPosterPath()" class="poster rounded-circle img-fluid">
+        </div>
+        <div class="col-md-4">
+            <h3 class="textC">Overview</h3>
+            <p class="textC">$details.getOverview()</p>
+        </div>
+        <div class="col-md-5">
+            #foreach($creator in $details.getCreatedBy())
+            <h2 class="textC">Created By: $creator.getName()</h2>
+            #end
+            <h3 class="textC">Production Companies and Run-Time</h3>
+            #foreach($company in $details.getNetworks())
+            <p class="textC"><strong>Production Company: $company.getName()</strong></p>
+            #end
+            <p class="textC">Episode Run Time: $details.getEpisodeRunTime().get(0) minutes</p>
+            <p></p>
+        </div>
+    </div>
+    <div class="comment">
+    <div class="card">
+    <div class="card-body">
+        <form>
+            <p class="h4 text-center py-4">Make A Review</p>
+            <div class="md-form">
+                <i class="fa fa-user prefix grey-text"></i>
+                <input type="text" id="materialFormCardNameEx" class="form-control">
+                <label for="materialFormCardNameEx" class="font-weight-light">Your name</label>
+            </div>
+
+            <div class="md-form">
+            <i class="fa fa-pencil prefix"></i>
+            <textarea type="text" id="form10" class="md-textarea form-control" rows="3"></textarea>
+            <label for="form10">Write a review for $details.getName()</label>
+            </div>
+
+            <div class="text-center py-4 mt-3">
+                <button class="btn btn-cyan" type="submit">Submit My Comment</button>
+            </div>
+        </form>
+</div>
+    </div>
+</div>
+</div>
