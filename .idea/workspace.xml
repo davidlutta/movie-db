@@ -100,7 +100,7 @@
       <find>static</find>
       <find>Result</find>
       <find>getId</find>
-      <find>Id Num</find>
+      <find />
       <find>logger</find>
       <find>number_of_episodes</find>
       <find>run</find>
@@ -555,9 +555,9 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="x" value="820" />
-    <option name="width" value="620" />
-    <option name="height" value="900" />
+    <option name="y" value="22" />
+    <option name="width" value="1440" />
+    <option name="height" value="836" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -656,7 +656,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="SearchEverywhereHistoryKey" value="seriesId&#9;PSI&#9;JAVA://null#seriesId" />
-    <property name="settings.editor.selected.configurable" value="preferences.externalDependencies" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
@@ -736,6 +736,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -746,10 +747,10 @@
       <window_info anchor="right" id="Maven Projects" order="3" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.38442522" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.21508035" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" weight="0.43220338" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.43194842" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32880098" />
       <window_info anchor="right" id="Gradle" order="3" weight="0.32907802" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
