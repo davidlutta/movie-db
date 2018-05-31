@@ -1,0 +1,15 @@
+<img src="https://image.tmdb.org/t/p/w500$details.getPosterPath()" alt="img" width="100px" height="100px">
+<h1>$details.getName()</h1>
+<h1>Number of Seasons: $details.getNumberOfSeasons()</h1>
+<h1>Episodes: $details.getNumberOfEpisodes()</h1>
+<!--#foreach($time in $details.getEpisodeRunTime())-->
+    <h2>Episode Run Time: $details.getEpisodeRunTime().get(0) minutes</h2>
+<!--#end-->
+#foreach($creator in $details.getCreatedBy())
+    <h2>Created By: $creator.getName()</h2>
+#end
+<h2>OverView:</h2>
+<p>$details.getOverview()</p>
+#foreach($company in $details.getNetworks())
+    <h1>Production Company: $company.getName()</h1>
+#end
