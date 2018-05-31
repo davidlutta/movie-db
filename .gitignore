@@ -13,7 +13,9 @@
 *.dmg
 *.gz
 *.iso
+
 *.jar
+
 *.rar
 *.tar
 *.zip
@@ -36,6 +38,12 @@ Thumbs.db
 ############
 build/
 .gradle/
+
+
+# Constants #
+############
+com.mdteam.Constants
+
 bin/
 .netlify
 
@@ -53,3 +61,4 @@ Constants.java
 
 # Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
 !gradle-wrapper.jar
+
