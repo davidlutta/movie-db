@@ -1,13 +1,15 @@
 
-package com.lkaranja.detailsmodel;
+package com.mdteam.detailsmodel;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class Genre {
+public class ProductionCompany {
 
     private Integer id;
+    private String logoPath;
     private String name;
+    private String originCountry;
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     public Integer getId() {
@@ -18,12 +20,28 @@ public class Genre {
         this.id = id;
     }
 
+    public String getLogoPath() {
+        return logoPath;
+    }
+
+    public void setLogoPath(String logoPath) {
+        this.logoPath = logoPath;
+    }
+
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getOriginCountry() {
+        return originCountry;
+    }
+
+    public void setOriginCountry(String originCountry) {
+        this.originCountry = originCountry;
     }
 
     public Map<String, Object> getAdditionalProperties() {

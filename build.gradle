@@ -1,7 +1,7 @@
 apply plugin: 'java'
 apply plugin: 'application'
 
-mainClassName = 'com.lkaranja.App'
+mainClassName = 'com.mdteam.App'
 
 dependencies {
     compile 'com.google.code.gson:gson:2.8.4'

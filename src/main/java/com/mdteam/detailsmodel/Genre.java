@@ -1,29 +1,29 @@
 
-package com.lkaranja.playmodel;
+package com.mdteam.detailsmodel;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class Dates {
+public class Genre {
 
-    private String maximum;
-    private String minimum;
+    private Integer id;
+    private String name;
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    public String getMaximum() {
-        return maximum;
+    public Integer getId() {
+        return id;
     }
 
-    public void setMaximum(String maximum) {
-        this.maximum = maximum;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public String getMinimum() {
-        return minimum;
+    public String getName() {
+        return name;
     }
 
-    public void setMinimum(String minimum) {
-        this.minimum = minimum;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Map<String, Object> getAdditionalProperties() {
