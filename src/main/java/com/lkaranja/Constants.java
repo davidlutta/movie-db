@@ -12,6 +12,7 @@ public class Constants {
 
     public static final String PLAYING_URL_PARAMETER = "https://api.themoviedb.org/3/movie/now_playing";
 
+    public static final String BASE_MOVIE_URL = "https://api.themoviedb.org/3/movie";
 
 
 
