@@ -1,0 +1,36 @@
+<div class="container">
+<div class="video">
+<iframe src="https://www.youtube.com/embed?listType=search&list=$details.getTitle()">
+</iframe>
+</div>
+<br><br>
+<div class="collections">
+#if($details.getBelongsToCollection().getName())
+<h2 class="textC">$details.getBelongsToCollection().getName()</h2>
+#else
+<p></p>
+#end
+</div>
+<div class="row">
+<div class="col-md-3">
+<img src="https://image.tmdb.org/t/p/w500$details.getPosterPath()" class="poster rounded-circle img-fluid">
+</div>
+<div class="col-md-4">
+<h3 class="textC">Overview and Release Date</h3>
+<p class="textC">$details.getOverview()</p>
+<p class="textC"><i class="fa fa-calendar"></i> <i>$details.getReleaseDate()</i></p>
+</div>
+<div class="col-md-5">
+<h3 class="textC">Production Companies and Costs</h3>
+#foreach($company in $details.getProductionCompanies())
+<li class="textC">$company.getName()</li>
+#end
+<p class="textC">Budget: $ $details.getBudget()</p>
+#if($details.getRevenue() =="0")
+<p class="textC">NO REVENUES YET</p>
+#else
+<p class="textC">Revenue: $ $details.getRevenue()</p>
+#end
+</div>
+</div>
+</div>
