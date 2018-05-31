@@ -1,5 +1,5 @@
 
-package com.GalacticNinja.Models2;
+package com.mdteam.Models2;
 
 import java.util.HashMap;
 import java.util.Map;

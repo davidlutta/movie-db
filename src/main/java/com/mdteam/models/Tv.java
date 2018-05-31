@@ -1,23 +1,23 @@
 
-package com.GalacticNinja.Models3;
+package com.mdteam.models;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Popular {
+public class Tv {
 
     private int page;
     private int totalResults;
     private int totalPages;
-    private List<LatestResult> LatestResult = null;
+    private List<Result> results = null;
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     /**
      * No args constructor for use in serialization
      * 
      */
-    public Popular() {
+    public Tv() {
     }
 
     /**
@@ -27,12 +27,12 @@ public class Popular {
      * @param page
      * @param totalPages
      */
-    public Popular(int page, int totalResults, int totalPages, List<LatestResult> results) {
+    public Tv(int page, int totalResults, int totalPages, List<Result> results) {
         super();
         this.page = page;
         this.totalResults = totalResults;
         this.totalPages = totalPages;
-        this.LatestResult = results;
+        this.results = results;
     }
 
     public int getPage() {
@@ -59,12 +59,12 @@ public class Popular {
         this.totalPages = totalPages;
     }
 
-    public List<LatestResult> getResults() {
-        return LatestResult;
+    public List<Result> getResults() {
+        return results;
     }
 
-    public void setResults(List<LatestResult> results) {
-        this.LatestResult = results;
+    public void setResults(List<Result> results) {
+        this.results = results;
     }
 
     public Map<String, Object> getAdditionalProperties() {

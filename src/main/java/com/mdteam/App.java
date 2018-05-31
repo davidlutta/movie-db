@@ -1,4 +1,4 @@
-package com.GalacticNinja;
+package com.mdteam;
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -6,9 +6,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.GalacticNinja.models.Result;
-import com.GalacticNinja.Models2.Details;
-import com.GalacticNinja.Models3.LatestResult;
+import com.mdteam.models.Result;
+import com.mdteam.Models2.Details;
+import com.mdteam.Models3.LatestResult;
 
 import com.google.gson.reflect.TypeToken;
 import okhttp3.HttpUrl;

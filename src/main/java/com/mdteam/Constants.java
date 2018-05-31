@@ -1,6 +1,4 @@
-package com.GalacticNinja;
-
-import com.GalacticNinja.models.Result;
+package com.mdteam;
 
 public class Constants {
     //base URL for top rated

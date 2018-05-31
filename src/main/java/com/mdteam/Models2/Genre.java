@@ -1,37 +1,31 @@
 
-package com.GalacticNinja.Models2;
+package com.mdteam.Models2;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class ProductionCompany {
+public class Genre {
 
     private int id;
-    private Object logoPath;
     private String name;
-    private String originCountry;
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     /**
      * No args constructor for use in serialization
      * 
      */
-    public ProductionCompany() {
+    public Genre() {
     }
 
     /**
      * 
      * @param id
-     * @param originCountry
      * @param name
-     * @param logoPath
      */
-    public ProductionCompany(int id, Object logoPath, String name, String originCountry) {
+    public Genre(int id, String name) {
         super();
         this.id = id;
-        this.logoPath = logoPath;
         this.name = name;
-        this.originCountry = originCountry;
     }
 
     public int getId() {
@@ -42,28 +36,12 @@ public class ProductionCompany {
         this.id = id;
     }
 
-    public Object getLogoPath() {
-        return logoPath;
-    }
-
-    public void setLogoPath(Object logoPath) {
-        this.logoPath = logoPath;
-    }
-
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getOriginCountry() {
-        return originCountry;
-    }
-
-    public void setOriginCountry(String originCountry) {
-        this.originCountry = originCountry;
     }
 
     public Map<String, Object> getAdditionalProperties() {

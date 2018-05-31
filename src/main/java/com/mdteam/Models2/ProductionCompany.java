@@ -1,14 +1,14 @@
 
-package com.GalacticNinja.Models2;
+package com.mdteam.Models2;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class Network {
+public class ProductionCompany {
 
-    private String name;
     private int id;
-    private String logoPath;
+    private Object logoPath;
+    private String name;
     private String originCountry;
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
@@ -16,7 +16,7 @@ public class Network {
      * No args constructor for use in serialization
      * 
      */
-    public Network() {
+    public ProductionCompany() {
     }
 
     /**
@@ -26,20 +26,12 @@ public class Network {
      * @param name
      * @param logoPath
      */
-    public Network(String name, int id, String logoPath, String originCountry) {
+    public ProductionCompany(int id, Object logoPath, String name, String originCountry) {
         super();
-        this.name = name;
         this.id = id;
         this.logoPath = logoPath;
-        this.originCountry = originCountry;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
         this.name = name;
+        this.originCountry = originCountry;
     }
 
     public int getId() {
@@ -50,12 +42,20 @@ public class Network {
         this.id = id;
     }
 
-    public String getLogoPath() {
+    public Object getLogoPath() {
         return logoPath;
     }
 
-    public void setLogoPath(String logoPath) {
+    public void setLogoPath(Object logoPath) {
         this.logoPath = logoPath;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getOriginCountry() {

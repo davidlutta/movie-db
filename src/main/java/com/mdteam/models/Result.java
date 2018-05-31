@@ -1,20 +1,20 @@
 
-package com.GalacticNinja.Models3;
+package com.mdteam.models;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class LatestResult {
+public class Result {
 
-    private String originalName;
+    private String original_name;
     private List<Integer> genreIds = null;
     private String name;
     private double popularity;
     private List<String> originCountry = null;
     private int vote_count;
     private String firstAirDate;
-    private String backdropPath;
+    private String backdrop_path;
     private String originalLanguage;
     private int id;
     private double voteAverage;
@@ -26,7 +26,7 @@ public class LatestResult {
      * No args constructor for use in serialization
      * 
      */
-    public LatestResult() {
+    public Result() {
     }
 
     /**
@@ -45,16 +45,16 @@ public class LatestResult {
      * @param voteAverage
      * @param popularity
      */
-    public LatestResult(String originalName, List<Integer> genreIds, String name, double popularity, List<String> originCountry, int voteCount, String firstAirDate, String backdropPath, String originalLanguage, int id, double voteAverage, String overview, String posterPath) {
+    public Result(String originalName, List<Integer> genreIds, String name, double popularity, List<String> originCountry, int voteCount, String firstAirDate, String backdropPath, String originalLanguage, int id, double voteAverage, String overview, String posterPath) {
         super();
-        this.originalName = originalName;
+        this.original_name = originalName;
         this.genreIds = genreIds;
         this.name = name;
         this.popularity = popularity;
         this.originCountry = originCountry;
         this.vote_count = voteCount;
         this.firstAirDate = firstAirDate;
-        this.backdropPath = backdropPath;
+        this.backdrop_path = backdropPath;
         this.originalLanguage = originalLanguage;
         this.id = id;
         this.voteAverage = voteAverage;
@@ -63,11 +63,11 @@ public class LatestResult {
     }
 
     public String getOriginalName() {
-        return originalName;
+        return original_name;
     }
 
     public void setOriginalName(String originalName) {
-        this.originalName = originalName;
+        this.original_name = originalName;
     }
 
     public List<Integer> getGenreIds() {
@@ -119,11 +119,11 @@ public class LatestResult {
     }
 
     public String getBackdropPath() {
-        return backdropPath;
+        return backdrop_path;
     }
 
     public void setBackdropPath(String backdropPath) {
-        this.backdropPath = backdropPath;
+        this.backdrop_path = backdropPath;
     }
 
     public String getOriginalLanguage() {
