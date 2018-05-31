@@ -1,8 +1,0 @@
-#foreach($LatestResult in $LatestResults)
-<img src="https://image.tmdb.org/t/p/w500$LatestResult.getPosterPath()" alt="img" width="100px" height="100px">
-<a href="/series/$LatestResult.getId()"><h1>Name: $LatestResult.getName()</h1></a>
-<h2>Vote Count: $LatestResult.getVoteCount()</h2>
-<h3>OverView: </h3>
-<p>$LatestResult.getOverview()</p>
-<a href="https://www.youtube.com/embed?listType=search&list=$LatestResult.getName()SeasonTrailer" class="btn btn-lg btn-info">Watch Preview</a>
-#end
