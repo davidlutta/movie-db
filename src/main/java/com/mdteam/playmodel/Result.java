@@ -1,11 +1,11 @@
 
-package com.lkaranja.playmodel;
+package com.mdteam.playmodel;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class PlayResult {
+public class Result {
 
     private Integer voteCount;
     private Integer id;
@@ -13,14 +13,14 @@ public class PlayResult {
     private Double voteAverage;
     private String title;
     private Double popularity;
-    private String poster_path;
+    private String posterPath;
     private String originalLanguage;
-    private String original_title;
+    private String originalTitle;
     private List<Integer> genreIds = null;
     private String backdropPath;
     private Boolean adult;
     private String overview;
-    private String release_date;
+    private String releaseDate;
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     public Integer getVoteCount() {
@@ -72,11 +72,11 @@ public class PlayResult {
     }
 
     public String getPosterPath() {
-        return poster_path;
+        return posterPath;
     }
 
     public void setPosterPath(String posterPath) {
-        this.poster_path = posterPath;
+        this.posterPath = posterPath;
     }
 
     public String getOriginalLanguage() {
@@ -88,11 +88,11 @@ public class PlayResult {
     }
 
     public String getOriginalTitle() {
-        return original_title;
+        return originalTitle;
     }
 
     public void setOriginalTitle(String originalTitle) {
-        this.original_title = originalTitle;
+        this.originalTitle = originalTitle;
     }
 
     public List<Integer> getGenreIds() {
@@ -128,11 +128,11 @@ public class PlayResult {
     }
 
     public String getReleaseDate() {
-        return release_date;
+        return releaseDate;
     }
 
     public void setReleaseDate(String releaseDate) {
-        this.release_date = releaseDate;
+        this.releaseDate = releaseDate;
     }
 
     public Map<String, Object> getAdditionalProperties() {

@@ -1,12 +1,12 @@
-package com.lkaranja;
+package com.mdteam;
 
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.lkaranja.detailsmodel.Details;
-import com.lkaranja.model.Result;
-import com.lkaranja.playmodel.*;
+import com.mdteam.detailsmodel.Details;
+import com.mdteam.model.Result;
+import com.mdteam.playmodel.*;
 
 import okhttp3.HttpUrl;
 import okhttp3.OkHttpClient;

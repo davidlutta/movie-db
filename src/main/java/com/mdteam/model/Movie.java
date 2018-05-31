@@ -1,5 +1,5 @@
 
-package com.lkaranja.model;
+package com.mdteam.model;
 
 import java.util.HashMap;
 import java.util.List;
