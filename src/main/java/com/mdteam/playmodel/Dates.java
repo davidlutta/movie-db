@@ -1,5 +1,5 @@
 
-package com.lkaranja.playmodel;
+package com.mdteam.playmodel;
 
 import java.util.HashMap;
 import java.util.Map;

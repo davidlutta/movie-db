@@ -1,4 +1,4 @@
-package com.lkaranja;
+package com.mdteam;
 
 public class Constants {
     public static final String BASE_URL = "https://api.themoviedb.org/3/discover/movie";
