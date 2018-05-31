@@ -1,5 +1,5 @@
 
-package com.lkaranja;
+package com.lkaranja.detailsmodel;
 
 import java.util.HashMap;
 import java.util.List;
@@ -9,20 +9,20 @@ public class Details {
 
     private Boolean adult;
     private String backdropPath;
-    private BelongsToCollection belongsToCollection;
+    private BelongsToCollection belongs_to_collection;
     private Integer budget;
     private List<Genre> genres = null;
     private String homepage;
     private Integer id;
-    private String imdbId;
+    private String imdb_id;
     private String originalLanguage;
     private String originalTitle;
     private String overview;
     private Double popularity;
-    private String posterPath;
-    private List<ProductionCompany> productionCompanies = null;
+    private String poster_path;
+    private List<ProductionCompany> production_companies = null;
     private List<ProductionCountry> productionCountries = null;
-    private String releaseDate;
+    private String release_date;
     private Integer revenue;
     private Integer runtime;
     private List<SpokenLanguage> spokenLanguages = null;
@@ -51,11 +51,11 @@ public class Details {
     }
 
     public BelongsToCollection getBelongsToCollection() {
-        return belongsToCollection;
+        return belongs_to_collection;
     }
 
     public void setBelongsToCollection(BelongsToCollection belongsToCollection) {
-        this.belongsToCollection = belongsToCollection;
+        this.belongs_to_collection = belongsToCollection;
     }
 
     public Integer getBudget() {
@@ -91,11 +91,11 @@ public class Details {
     }
 
     public String getImdbId() {
-        return imdbId;
+        return imdb_id;
     }
 
     public void setImdbId(String imdbId) {
-        this.imdbId = imdbId;
+        this.imdb_id = imdbId;
     }
 
     public String getOriginalLanguage() {
@@ -131,19 +131,19 @@ public class Details {
     }
 
     public String getPosterPath() {
-        return posterPath;
+        return poster_path;
     }
 
     public void setPosterPath(String posterPath) {
-        this.posterPath = posterPath;
+        this.poster_path = posterPath;
     }
 
     public List<ProductionCompany> getProductionCompanies() {
-        return productionCompanies;
+        return production_companies;
     }
 
     public void setProductionCompanies(List<ProductionCompany> productionCompanies) {
-        this.productionCompanies = productionCompanies;
+        this.production_companies = productionCompanies;
     }
 
     public List<ProductionCountry> getProductionCountries() {
@@ -155,11 +155,11 @@ public class Details {
     }
 
     public String getReleaseDate() {
-        return releaseDate;
+        return release_date;
     }
 
     public void setReleaseDate(String releaseDate) {
-        this.releaseDate = releaseDate;
+        this.release_date = releaseDate;
     }
 
     public Integer getRevenue() {
