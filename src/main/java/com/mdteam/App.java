@@ -201,7 +201,7 @@ public class App{
      get("/", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
 
-            HttpUrl.Builder playingBuilder = HttpUrl.parse(Constants.BASE_DISCOVER_URL).newBuilder();
+            HttpUrl.Builder playingBuilder = HttpUrl.parse(Constants.BASE_URL).newBuilder();
             // playingBuilder.addQueryParameter(Constants.VIDEO_PARAMETER,Constants.VIDEO);
             // playingBuilder.addQueryParameter(Constants.ADULT_PARAMETER,Constants.ADULT);
             // playingBuilder.addQueryParameter(Constants.SORT_PARAMETER,Constants.SORT);
