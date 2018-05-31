@@ -84,22 +84,21 @@ public class App {
         return playresults;
     }
 
-    public static List<Details> processDetailResults(Response response) {
-        List<Details> detailresults = new ArrayList<>();
+    public static Details processDetailResults(Response response) {
+        Details detailresults = null;
         // Result result = null;
 
         try {
             String jsonData = response.body().string();
-
-            // logger.info("jsonData: " + jsonData);
+            logger.info("Details response: " + jsonData);
             if (response.isSuccessful()) {
                 JSONObject responseJson = new JSONObject(jsonData);
-                JSONArray jsonArray = responseJson.getJSONArray("results");
+                // JSONArray jsonArray = responseJson.getJSONArray("results");
 
-                Type collectionType = new TypeToken<List<Details>>() {}.getType();
+                // Type collectionType = new TypeToken<List<Details>>() {}.getType();
 
                 Gson gson = new GsonBuilder().create();
-                detailresults = gson.fromJson(jsonArray.toString(), collectionType);
+                detailresults = gson.fromJson(responseJson.toString(), Details.class);
                 
             }
         } catch (JSONException | NullPointerException | IOException e) {
@@ -191,21 +190,23 @@ public class App {
 
             String movieID = req.params("id");
 
-            HttpUrl.Builder detailsBuilder = HttpUrl.parse(Constants.BASE_URL+movieID).newBuilder();
+            HttpUrl.Builder detailsBuilder = HttpUrl.parse(Constants.BASE_MOVIE_URL).newBuilder();
+            detailsBuilder.addPathSegments(movieID);            
+            detailsBuilder.addQueryParameter(Constants.API_PARAMETER,Constants.API);
+            
             // detailsBuilder.addQueryParameter(name, value)
 
             String url_details = detailsBuilder.build().toString();
-            logger.info("PLaying url is: "+url_details);
+            logger.info("Details url is: "+url_details);
 
-            Request requestplay = new Request.Builder()
+            Request requestdetails= new Request.Builder()
                 .url(url_details)
                 .build();
 
-            try (Response detailsresponse = client.newCall(requestplay).execute()) {
-                List<PlayResult> details_result = processPlayingResults(detailsresponse);
+            try (Response detailsresponse = client.newCall(requestdetails).execute()) {
+                Details details_result = processDetailResults(detailsresponse);
                 if (details_result != null) {
                     model.put("details", details_result);
-                    // logger.info("Playing result is: "+playin_result);
 
                 }
             } catch(IOException e) {
