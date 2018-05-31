@@ -1,5 +1,5 @@
 
-package com.mdteam.Models3;
+package com.mdteam.models3;
 
 import java.util.HashMap;
 import java.util.List;

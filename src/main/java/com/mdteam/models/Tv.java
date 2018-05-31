@@ -10,7 +10,7 @@ public class Tv {
     private int page;
     private int totalResults;
     private int totalPages;
-    private List<Result> results = null;
+    private List<Results> results = null;
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     /**
@@ -27,7 +27,7 @@ public class Tv {
      * @param page
      * @param totalPages
      */
-    public Tv(int page, int totalResults, int totalPages, List<Result> results) {
+    public Tv(int page, int totalResults, int totalPages, List<Results> results) {
         super();
         this.page = page;
         this.totalResults = totalResults;
@@ -59,11 +59,11 @@ public class Tv {
         this.totalPages = totalPages;
     }
 
-    public List<Result> getResults() {
+    public List<Results> getResults() {
         return results;
     }
 
-    public void setResults(List<Result> results) {
+    public void setResults(List<Results> results) {
         this.results = results;
     }
 

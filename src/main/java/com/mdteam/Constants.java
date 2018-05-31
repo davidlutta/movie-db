@@ -11,4 +11,10 @@ public class Constants {
     public static final String BASE_DETAILS_URL = "https://api.themoviedb.org/3/tv/";
     //base Url for latest
     public static final String BASE_POPULAR_URL = "https://api.themoviedb.org/3/tv/popular";
+
+    public static final String BASE_MOVIE_URL = "https://api.themoviedb.org/3/movie";
+
+    public static final String PLAYING_URL_PARAMETER = "https://api.themoviedb.org/3/movie/now_playing";
+
+    public static final String BASE_DISCOVER_URL = "https://api.themoviedb.org/3/discover/movie";
 }

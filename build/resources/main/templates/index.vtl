@@ -1,9 +1,16 @@
-#foreach($result in $results)
-<img src="https://image.tmdb.org/t/p/w500$result.getPosterPath()" alt="img" width="100px" height="100px">
-<a href="/series/$result.getId()" id="id"><h1>Name: $result.getOriginalName()</h1></a>
-<h2>Vote Count: $result.getVoteCount()</h2>
-<h3>Overview:</h3>
-<p>$result.getOverview()</p>
-<a href="https://www.youtube.com/embed?listType=search&list=$result.getName()SeasonTrailer" class="btn btn-lg btn-info">Watch Preview</a>
+<div class="row">
+<div class="card-columns">
+#foreach ($movie in $movies)
+<div class="card card-image" style="background-image: url(https://image.tmdb.org/t/p/w500$movie.getPosterPath())">
+    <div class="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4">
+        <div>
+        <h5 class="pink-text"><i class="fa fa-calendar"></i> $movie.getReleaseDate()</h5>
+        <h3 class="card-title pt-2"><i class="fa fa-film"></i><strong>$movie.getTitle()</strong></h3>
+        <p>$movie.getOverview()</p>
+        <a class="btn btn-pink" href="/details/$movie.getId()"><i class="fa fa-clone left"></i> View/Rate</a>
+        </div>
+    </div>
+</div>
 #end
-<a href="/popular"><button class="btn btn-info btn">View Latest Tv Series</button></a>
+</div>
+</div>

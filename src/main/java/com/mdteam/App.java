@@ -6,12 +6,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.mdteam.models.Result;
-import com.mdteam.Models2.Details;
-import com.mdteam.Models3.LatestResult;
+import com.mdteam.models.Results;
+import com.mdteam.models2.Details;
+import com.mdteam.models3.LatestResult;
 
 import com.google.gson.reflect.TypeToken;
-import com.mdteam.detailsmodel.Details;
+import com.mdteam.detailsmodel.*;
 import com.mdteam.model.Result;
 import com.mdteam.playmodel.*;
 
@@ -42,9 +42,9 @@ public class App{
     static Logger logger = LoggerFactory.getLogger(App.class);
     //TOP RATED
     //Converitng JSON Object to TV Series Object using JSONOBJECT and GSON Library
-    public static List<Result> processTvSeriesResult(Response response){
+    public static List<Results> processTvSeriesResult(Response response){
         //Putting all our results in an Array List
-        List<Result> results= new ArrayList<>();
+        List<Results> results= new ArrayList<>();
 
         //Trying to convert JSON Object to Tv Series Object
         try{
@@ -57,7 +57,7 @@ public class App{
                 JSONObject responseJson = new JSONObject(jsonData);
                 JSONArray jsonArray = responseJson.getJSONArray("results");
 
-                Type collectionType = new TypeToken<List<Result>>(){}.getType();
+                Type collectionType = new TypeToken<List<Results>>(){}.getType();
                 //Converting JSON Object to a java Object using GSON library
                 //instance of the class GSON
                 Gson gson = new GsonBuilder().create();
@@ -201,11 +201,11 @@ public class App{
      get("/", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
 
-            HttpUrl.Builder playingBuilder = HttpUrl.parse(Constants.BASE_URL).newBuilder();
-            playingBuilder.addQueryParameter(Constants.VIDEO_PARAMETER,Constants.VIDEO);
-            playingBuilder.addQueryParameter(Constants.ADULT_PARAMETER,Constants.ADULT);
-            playingBuilder.addQueryParameter(Constants.SORT_PARAMETER,Constants.SORT);
-            playingBuilder.addQueryParameter(Constants.API_PARAMETER,Constants.API);
+            HttpUrl.Builder playingBuilder = HttpUrl.parse(Constants.BASE_DISCOVER_URL).newBuilder();
+            // playingBuilder.addQueryParameter(Constants.VIDEO_PARAMETER,Constants.VIDEO);
+            // playingBuilder.addQueryParameter(Constants.ADULT_PARAMETER,Constants.ADULT);
+            // playingBuilder.addQueryParameter(Constants.SORT_PARAMETER,Constants.SORT);
+            playingBuilder.addQueryParameter(Constants.API_PRE,Constants.API_KEY);
 
             String url = playingBuilder.build().toString();
             logger.info("url is: "+url);
@@ -243,7 +243,7 @@ public class App{
                    .build();
            //Trying to get a response from server
            try(Response response = client.newCall(request1).execute()){
-               List<Result> result = processTvSeriesResult(response);
+               List<Results> result = processTvSeriesResult(response);
                //Checking if result is null or not
                if (result != null){
                    model.put("results", result);
@@ -252,7 +252,7 @@ public class App{
                e.getStackTrace();
                //Catching an IOException
            }
-           model.put("template", "templates/index.vtl");
+           model.put("template", "templates/tv.vtl");
            return new VelocityTemplateEngine().render(new ModelAndView(model, layout));
        });
 
@@ -260,7 +260,7 @@ public class App{
             Map<String, Object> model = new HashMap<>();
 
             HttpUrl.Builder playingBuilder = HttpUrl.parse(Constants.PLAYING_URL_PARAMETER).newBuilder();
-            playingBuilder.addQueryParameter(Constants.API_PARAMETER,Constants.API);
+            playingBuilder.addQueryParameter(Constants.API_PRE,Constants.API_KEY);
 
             String url_playing = playingBuilder.build().toString();
             logger.info("PLaying url is: "+url_playing);
@@ -290,7 +290,7 @@ public class App{
 
             HttpUrl.Builder detailsBuilder = HttpUrl.parse(Constants.BASE_MOVIE_URL).newBuilder();
             detailsBuilder.addPathSegments(movieID);            
-            detailsBuilder.addQueryParameter(Constants.API_PARAMETER,Constants.API);
+            detailsBuilder.addQueryParameter(Constants.API_PRE,Constants.API_KEY);
             
             // detailsBuilder.addQueryParameter(name, value)
 
@@ -314,11 +314,7 @@ public class App{
             model.put("template", "templates/details.vtl");
             return new VelocityTemplateEngine().render(new ModelAndView(model, layout));
         });
-     
-     
-     //////SERIES
 
-       //POPULAR
        get("/popular", (request, response1) -> {
            Map<String, Object> model = new HashMap<>();
            HttpUrl.Builder urlBuilder3 = HttpUrl.parse(Constants.BASE_POPULAR_URL).newBuilder();
@@ -339,8 +335,6 @@ public class App{
            return new VelocityTemplateEngine().render(new ModelAndView(model, layout));
        });
 
-
-       //SERIES DETAILS PAGE
        get("/series/:id", (request, response) -> {
            Map<String, Object> model = new HashMap<>();
            HttpUrl.Builder urlBuilder2 = HttpUrl.parse(Constants.BASE_DETAILS_URL).newBuilder();

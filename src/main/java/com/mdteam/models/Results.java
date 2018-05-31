@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Result {
+public class Results {
 
     private String original_name;
     private List<Integer> genreIds = null;
@@ -26,7 +26,7 @@ public class Result {
      * No args constructor for use in serialization
      * 
      */
-    public Result() {
+    public Results() {
     }
 
     /**
@@ -45,7 +45,7 @@ public class Result {
      * @param voteAverage
      * @param popularity
      */
-    public Result(String originalName, List<Integer> genreIds, String name, double popularity, List<String> originCountry, int voteCount, String firstAirDate, String backdropPath, String originalLanguage, int id, double voteAverage, String overview, String posterPath) {
+    public Results(String originalName, List<Integer> genreIds, String name, double popularity, List<String> originCountry, int voteCount, String firstAirDate, String backdropPath, String originalLanguage, int id, double voteAverage, String overview, String posterPath) {
         super();
         this.original_name = originalName;
         this.genreIds = genreIds;
